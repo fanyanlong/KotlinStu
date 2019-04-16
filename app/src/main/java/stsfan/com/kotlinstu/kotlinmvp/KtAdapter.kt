@@ -32,7 +32,7 @@ class KtAdapter(var context: Context, var ktBean: KtBean) : RecyclerView.Adapter
 
     override fun onBindViewHolder(p0: MyViewHolder, p1: Int) {
         // p0.kttv.setText(ktBean.result.get(p1).name)
-        p0.kttv!!.text = ktBean.result.get(p1).name
+        p0.kttv.text = ktBean.result.get(p1).name
         p0.ktimg.setImageURI(Uri.parse(ktBean.result.get(p1).imageUrl))
     }
 

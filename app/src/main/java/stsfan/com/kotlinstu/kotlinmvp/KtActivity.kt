@@ -43,7 +43,7 @@ open class KtActivity : AppCompatActivity(), Contract.Iview {
 
         var block: (KtPresenter?) -> Unit = {
             it!!.Attch(this)
-            it!!.GetPersnetViewDate(page, count)
+            it.GetPersnetViewDate(page, count)
         }
         ktpresenter.let(block)
 
@@ -62,6 +62,7 @@ open class KtActivity : AppCompatActivity(), Contract.Iview {
                         ktpresenter!!.GetPersnetViewDate(page, count)
                         adapter!!.notifyDataSetChanged()
                         kt_xrecyclerview.loadMoreComplete()
+
                     }
                 }, 1000)
 

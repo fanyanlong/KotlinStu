@@ -12,17 +12,15 @@ import java.lang.ref.SoftReference
  *
  */
 open class KtPresenter(val mview: KtActivity) : Contract.Ipresenter {
-    var soft: SoftReference<Contract.Imodel>? = null
-    var mmodel: KtModel? = null
-    //private var mUserPresenter: UserPresenter? = null
+    var mmodel: KtModel? = KtModel()
     //?可为空
-    open override fun Attch(miview: Contract.Iview) {
-        var mmodel: KtModel? = KtModel()
+    override fun Attch(miview: Contract.Iview) {
+
         //软引用
-        soft = SoftReference<Contract.Imodel>(mmodel)
+       // soft = SoftReference<Contract.Imodel>(mmodel)
     }
 
-    open override fun Decth() {
+    override fun Decth() {
         if (mview != null) {
             mview == null
         }
@@ -30,9 +28,9 @@ open class KtPresenter(val mview: KtActivity) : Contract.Ipresenter {
 
     override fun GetPersnetViewDate(page: Int, count: Int) {
         //!!表示对象不为空的情况下去执行
-        soft!!.get()!!.GetModelDate(page, count, object : Contract.Imodel.ModelCallBack {
+        mmodel!!.GetModelDate(page, count, object : Contract.Imodel.ModelCallBack {
             override fun onSuccess(mttbena: KtBean) {
-                mview!!.GetViewDate(mttbena)
+                mview.GetViewDate(mttbena)
             }
 
             override fun onFails() {
